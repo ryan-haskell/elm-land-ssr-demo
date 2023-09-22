@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "start": "npm i && npm run dev",
+    "dev": "elm-land server & node server.js"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
