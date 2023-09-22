@@ -1,9 +1,19 @@
 {
   "scripts": {
     "start": "npm i && npm run dev",
-    "dev": "elm-land server & node server.js"
+    "dev": "concurrently 'npm:elm-land' 'nodemon -w backend backend/server.js' -c cyan,magenta -n elm,api ",
+    "elm-land": "chokidar --initial src -c 'npm run elm-land:gen && npm run elm:make:dev'",
+    "build": "elm-land generate && elm make .elm-land/src/Main.elm --output=dist/elm-land.compiled.js --optimize",
+    "elm-land:gen": "elm-land generate",
+    "elm:make:dev": "elm make .elm-land/src/Main.elm --output=dist/elm-land.compiled.js"
   },
   "dependencies": {
     "express": "4.18.2"
+  },
+  "devDependencies": {
+    "chokidar-cli": "3.0.0",
+    "concurrently": "8.2.1",
+    "elm-land": "0.19.3",
+    "nodemon": "3.0.1"
   }
 }

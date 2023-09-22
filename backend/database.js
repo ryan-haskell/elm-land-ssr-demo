@@ -1,4 +1,7 @@
-let data = {
+// This file is just a fake database module,
+// but you'd replace this with your SQL ORM, MongoDB thingy, etc
+
+let db = {
   boxes: {
     "1": { id: "1", name: "Box #1", description: "The 'Box #1' is the best in the business" },
     "2": { id: "2", name: "Box #2", description: "The 'Box #2' is the best in the business" },
@@ -14,7 +17,7 @@ let data = {
 
 module.exports = {
   boxes: {
-    get: async () => data.boxes,
-    find: async (id) => data.boxes[id]
+    get: async () => Object.values(db.boxes),
+    find: async (id) => db.boxes[id]
   }
 }
